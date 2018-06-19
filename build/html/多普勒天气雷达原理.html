@@ -113,16 +113,17 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id16">折射</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id17">折射指数</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id18">标准折射</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id19">负折射</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id20">超折射</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">等效地球半径</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">标准折射</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">负折射</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">超折射</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id21">距离折叠</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id22">速度模糊</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id23">零度层亮带</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id22">距离折叠</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id23">速度模糊</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id24">零度层亮带</a></li>
 </ul>
 </li>
 </ul>
@@ -318,6 +319,9 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 <div class="section" id="id5">
 <h3>散射的分类<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>当雷达发射的电磁波波长 <span class="math notranslate nohighlight">\(\lambda\)</span> 一定时，粒子的散射情况主要取决于粒子直径 d 与波长  <span class="math notranslate nohighlight">\(\lambda\)</span> 之比。</p>
+<div class="figure align-center">
+<img alt="瑞利散射和米散射" src="_images/rayleigh_or_mie_scattering.jpg" />
+</div>
 <p>瑞利散射： <span class="math notranslate nohighlight">\(d &lt;&lt; \lambda\)</span> 或 <span class="math notranslate nohighlight">\(\alpha = \frac{2 \pi a}{\lambda} &lt; 0.13\)</span> 时的小球形粒子的散射</p>
 <p>米（Mie）散射： <span class="math notranslate nohighlight">\(d \approx \lambda\)</span> 或 <span class="math notranslate nohighlight">\(\alpha  = \frac{2 \pi a}{\lambda} \geq 0.13\)</span> 时的小球形粒子的散射。</p>
 </div>
@@ -402,7 +406,7 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 <h3>气体的衰减<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <p>气体对电磁波的衰减主要为水汽在1.35±0.18cm和0.2cm波长的吸收带以及氧气在0.5cm波长的吸收带，
 对于发射厘米波的天气雷达而言，气体衰减对厘米波影响小，量级约为 <span class="math notranslate nohighlight">\(10^{－3} ~ 10^{－4} dB/km\)</span></p>
-<div class="figure align-center" id="id24">
+<div class="figure align-center" id="id25">
 <img alt="大气气体对10cm雷达波的衰减" src="_images/气体对10cm雷达波的衰减.png" />
 <p class="caption"><span class="caption-text">图 大气气体对10cm雷达波的衰减</span></p>
 </div>
@@ -425,7 +429,7 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 <h3>雨的衰减<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
 <p>实际应用中，把雨的衰减表示成降水率（雨强）的函数，雨的衰减系数与雨强近于成正相关关系，
 同时雨的衰减系数与雷达波长有关，波长越短，衰减越大，随着波长的增加，雨对雷达波的衰减迅速减小。</p>
-<div class="figure align-center" id="id25">
+<div class="figure align-center" id="id26">
 <a class="reference internal image-reference" href="_images/雨的衰减系数.png"><img alt="雨的衰减系数" src="_images/雨的衰减系数.png" style="width: 484.0px; height: 326.40000000000003px;" /></a>
 <p class="caption"><span class="caption-text">图 雨的衰减系数</span></p>
 </div>
@@ -539,18 +543,18 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 <p>下图展示了一个虚拟的圆形雨区，直径8km，中心雨强100mm/h情况下3.2cm波长雷达和10cm波长雷达的回波图像，
 可以发现10cm波长雷达由于衰减小，等回波强度线与等降水强度线基本一致，而3cm波长雷达，由于衰减严重，
 雷达径向方向上远离雷达一侧的雨区没有表现，使回波范围缩小，形状失真。</p>
-<div class="figure align-center" id="id26">
+<div class="figure align-center" id="id27">
 <img alt="雨区的衰减" src="_images/雨区的衰减.png" />
 <p class="caption"><span class="caption-text">图 虚拟的雨区（a）以及在3.2cm（b）和10cm（c）雷达上显示的回波强度分布</span></p>
 </div>
 <p>在一块较强回波的相对雷达径向的后侧，可由前侧强回波中的降水粒子衰减造成无回波的情况，如下图，</p>
-<div class="figure align-center" id="id27">
+<div class="figure align-center" id="id28">
 <a class="reference internal image-reference" href="_images/衰减导致的强回波后无回波.png"><img alt="衰减导致的强回波后无回波" src="_images/衰减导致的强回波后无回波.png" style="width: 644.8000000000001px; height: 396.8px;" /></a>
 <p class="caption"><span class="caption-text">图 衰减导致的强回波后无回波</span></p>
 </div>
 <p>下图显示了一条飑线过境前后的C波段雷达回波图，在飑线到达雷达站时，雷达发射的电磁波要穿过其线状强对流，
 造成了雷达径向方向上，飑线南北两侧回波的强烈衰减，当飑线过境后，衰减减弱。</p>
-<div class="figure align-center" id="id28">
+<div class="figure align-center" id="id29">
 <a class="reference internal image-reference" href="_images/squall_atten.jpg"><img alt="飑线衰减" src="_images/squall_atten.jpg" style="width: 504.0px; height: 319.20000000000005px;" /></a>
 <p class="caption"><span class="caption-text">图 飑线过境时南北两侧回波强度在5cm波长雷达上出现显著的衰减</span></p>
 </div>
@@ -563,31 +567,84 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 从而使雷达波束传播路径发生弯曲，电磁波的折射对天气雷达的探测有重要的影响。</p>
 <div class="section" id="id17">
 <h3>折射指数<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<p>介质的折射指数定义为：电磁波在真空中的传播速度 c 与电磁波在介质中的传播速度 v 的比值，即</p>
+<div class="math notranslate nohighlight">
+\[n = \frac{c}{v}\]</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/折射定律.png"><img alt="折射定律" src="_images/折射定律.png" style="width: 443.5px; height: 333.5px;" /></a>
+</div>
+<p>上图中，雷达波束从折射指数为 <span class="math notranslate nohighlight">\(n_1\)</span> 进入到 折射指数 <span class="math notranslate nohighlight">\(n_2\)</span> 的气层时，发生折射，
+入射角为 <span class="math notranslate nohighlight">\(\phi_1\)</span> ，折射角为 <span class="math notranslate nohighlight">\(\phi_2\)</span> ，根据折射定律有以下关系</p>
+<div class="math notranslate nohighlight">
+\[\frac{sin \phi_1}{sin \phi_2} = \frac{n_2}{n_1}\]</div>
+<p>即，</p>
+<div class="math notranslate nohighlight">
+\[n_1 sin \phi_1 = n_2 sin \phi_2\]</div>
+<div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p>由于地球曲率的影响，使得电磁波即使以直线传播，其波束距地面的距离也在发生变化，不同高度温、压、湿的差异导致了折射指数的变化，
+改变了雷达波束的传播方式，不同高度折射指数与大气要素间的关系如下，</p>
+<div class="math notranslate nohighlight">
+\[n(h) = \frac{77.6}{T(h)}[P(h) + 4810 \frac{P_w (h)}{T(h)}] \cdot 10^{-6} + 1\]</div>
+<p class="last">上式中，<span class="math notranslate nohighlight">\(T(h), P(h), P_w (h)\)</span> 分别为高度h处的温度、气压和水汽压。</p>
+</div>
+<p>依据曲率的定义和折射定律，可以得到曲率 K 和折射指数高度变化之间的关系如下，</p>
+<div class="math notranslate nohighlight">
+\[K = - \frac{sin \alpha}{n(h)} \cdot \frac{dn(h)}{dh} \approx - \frac{dn(h)}{dh} (当仰角为0°，n(h) \approx 1)\]</div>
+<p>从上式可知，当折射指数随高度减小（通常情况），即 <span class="math notranslate nohighlight">\(- \frac{dn(h)}{dh} &gt; 0\)</span> ，此时曲率 K &gt; 0，雷达波束向下弯曲，反之则向上弯曲。</p>
 <div class="section" id="id18">
-<h4>标准折射<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h4>
+<h4>等效地球半径<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h4>
+<p>等效地球半径（effective earth radius）是用于订正大气折射而引入的取代地球真实半径的一个虚拟的半径。</p>
+<p>为了简化问题，将雷达波束在大气中的传播路径作为直线，将其表达在一个具有虚拟半径的地球大气中，
+从而能使雷达波束的传播路径与地面的相对位置保持不变（相对曲率为零），则这个虚拟的地球具有的半径称为等效地球半径。</p>
+<p>雷达波束与地面的相对曲率为：</p>
+<div class="math notranslate nohighlight">
+\[K_m = K_e - K = \frac{1}{R_e} + \frac{dn(h)}{dh}\]</div>
+<p>将 <span class="math notranslate nohighlight">\(K_m\)</span> 作为虚拟地球的曲率，则等效地球半径可表达为：</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{R_m} = \frac{1}{R_e} + \frac{dn(h)}{dh}\]</div>
+<p>即，</p>
+<div class="math notranslate nohighlight">
+\[R_m = \frac{R_e}{1 + R_e \frac{dn}{dh}}\]</div>
 </div>
 <div class="section" id="id19">
-<h4>负折射<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h4>
+<h4>标准折射<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h4>
 </div>
 <div class="section" id="id20">
-<h4>超折射<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h4>
-</div>
-</div>
+<h4>负折射<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h4>
 </div>
 <div class="section" id="id21">
-<h2>距离折叠<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h2>
+<h4>超折射<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="id22">
+<h2>距离折叠<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h2>
 <p>距离折叠示意动画</p>
 <video controls src="_static/range_folding_animation_2.mp4"></video></div>
-<div class="section" id="id22">
-<h2>速度模糊<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id23">
+<h2>速度模糊<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h2>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="_images/brown_wood_jet_veering_aliased.jpg"><img alt="飑线衰减" src="_images/brown_wood_jet_veering_aliased.jpg" style="width: 464.0px; height: 384.0px;" /></a>
 </div>
 </div>
-<div class="section" id="id23">
-<h2>零度层亮带<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id24">
+<h2>零度层亮带<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h2>
+<p>零度层亮带表现为层状云回波中，较高仰角PPT图上的圆环状强回波带或RHI扫描中的同一高度的强回波区。</p>
+<p>其形成原因是高层冰晶下落过程中不断碰并聚合增长形成更大的雪花，增长使得反射率不断增加，直到接近融化层，
+随着粒子穿过0℃层，雪花开始融化，使得其外层覆盖一层水膜（高反射率因子），这使得反射率明显增加，
+随着雪花融化为液态水，使得粒子尺度减小（密度增加）并且大水滴有较大的下落末速度，减少了雷达取样体积内粒子
+的数浓度，从而使得反射率减低，上述过程使得雷达回波上出现孤立的水平高反射率层，通常出现在0℃等温线以下100m左右。</p>
 <p>下面动画展示了雪花下落到一个更暖的空气中，并且在暖层中部分融化聚合，从而使得雷达反射率增加，称为零度层亮带，随后雪花逐渐融化为雨滴，使得雷达反射率又减小。</p>
-<video controls src="_static/brightband.mp4"></video></div>
+<video controls src="_static/brightband.mp4"></video><div class="figure align-center" id="id30">
+<a class="reference internal image-reference" href="_images/零度层亮带PPI.png"><img alt="PPI图上的零度层亮带" src="_images/零度层亮带PPI.png" style="width: 465.0px; height: 318.0px;" /></a>
+<p class="caption"><span class="caption-text">图：PPI图上的零度层亮带</span></p>
+</div>
+<div class="figure align-center" id="id31">
+<img alt="RHI图上的零度层亮带" src="_images/bright_band_noaa.print.png" />
+<p class="caption"><span class="caption-text">图：RHI图上的零度层亮带</span></p>
+</div>
+</div>
 </div>
 
 
