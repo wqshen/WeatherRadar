@@ -1,0 +1,661 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ZH-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ZH-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>多普勒天气雷达原理 &mdash; WeatherRadar 0.0.1 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="prev" title="Welcome to WeatherRadar’s documentation!" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> WeatherRadar
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">多普勒天气雷达原理</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">中国新一代天气雷达网</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">新一代天气雷达系统的主要构成</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rda">雷达数据采集子系统（RDA）</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scan-strategy">扫描方式（scan strategy）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vcp-volume-cover-pattern">体扫模式(VCP，Volume Cover Pattern）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operational-mode">工作模式（Operational Mode）</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rpg">雷达产品生成系统（RPG）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pup">主用户终端子系统（PUP）</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">气象目标对雷达电磁波的散射</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">散射的分类</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">雷达截面</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">后向散射截面</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">不同粒子散射能力对比</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">衰减</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">气体的衰减</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">云的衰减</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">雨的衰减</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">雪的衰减</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">冰雹的衰减</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">衰减引起回波失真</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id16">折射</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id17">折射指数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id18">标准折射</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">负折射</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">超折射</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id21">距离折叠</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id22">速度模糊</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id23">零度层亮带</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">WeatherRadar</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>多普勒天气雷达原理</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/多普勒天气雷达原理.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>多普勒天气雷达原理<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p><strong>雷达</strong> ，英文名为 <em>Radar</em> ，是 <em>radio detecting and ranging of objects</em> 的缩写，意即对反射性物体的无线电检测和定位，其本质为一通过发射和接收电磁波来探测和定位目标物的遥感系统。其工作流程为：发射 -&gt; 截获 -&gt; 散射 -&gt; 天线接收 -&gt; 信号处理获取信息。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p><strong>散射和反射的区别</strong></p>
+<p class="last">两者相同点为：改变入射电磁波的方向，但能量形式不变；散射是在入射波的极化下做强迫多级振荡，发出次波。</p>
+</div>
+<dl class="docutils">
+<dt>我国天气雷达发展概况</dt>
+<dd><ol class="first last arabic simple">
+<li>1950年：引进Decca41雷达用于监测天气。</li>
+<li>1960S：研制X波段小型天气雷达(711)，改造S波段军用雷达用于警戒台风</li>
+<li>1970S：研制C波段天气雷达(713)和S波段天气雷达(714)，作为国内主要布网天气雷达</li>
+<li>1980S：完成以C波段天气雷达为主，沿海S波段天气雷达的业务天气雷达站网，711雷达用作局地使用和人工影响天气试验。开始对部分天气雷达进行数字化改造</li>
+<li>1990S：前期进行多普勒天气雷达技术试验，中期着手发展新一代天气雷达系统，后期开始布站用于气象业务</li>
+<li>2000S：中期完成新一代天雷达站网建设</li>
+</ol>
+</dd>
+</dl>
+<div class="section" id="id2">
+<h2>中国新一代天气雷达网<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>我国新一代天气雷达业务组网的建设目标是：在我国东部和中部地区，装备先进的新一代S频段和C频段多普勒天气雷达系统，组成探测空间相互衔接覆盖的监测网，实时监测提供降水强度、平均径向速度和频谱宽度等信息。对降水，特别是暴雨、热带气旋、强对流等灾害性天气和重要天气系统进行有效的监测和警报。</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">国际电信联盟(ITU)为无线电定位(雷达)指定了特定的频段。最初的代码(如P，L，S，X和K)是在二战期间为保密而引入的</p>
+</div>
+<p>中国新一代天气雷达网布网思路：</p>
+<ol class="arabic simple">
+<li>中东部：暴雨、台风多，选择S波段</li>
+<li>西部：降雨少，选择C波段</li>
+<li>云南：多山，选择C波段</li>
+<li>东北：降雨季节短，冬季降雪，选择C波段</li>
+</ol>
+<p>中国新一代天气雷达网的雷达型号：</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="26%" />
+<col width="26%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">S波段</th>
+<th class="head">生产厂家</th>
+<th class="head">C波段</th>
+<th class="head">生产厂家</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CINRAD/SA</td>
+<td>北京敏视达</td>
+<td>CINRAD/CA</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>CINRAD/SB</td>
+<td>北京敏视达</td>
+<td>CINRAD/CB</td>
+<td>北京敏视达</td>
+</tr>
+<tr class="row-even"><td>CINRAD/SC</td>
+<td>成都784厂</td>
+<td>CINRAD/CC</td>
+<td>合肥38所</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>&#160;</td>
+<td>CINRAD/CD</td>
+<td>成都784厂</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>CINRAD/CCJ</td>
+<td>合肥38所</td>
+</tr>
+</tbody>
+</table>
+<p>雷达的优势有：资料密集，分辨率高，立体扫描，产品丰富。主要的应用包括，对灾害性天气的监测和预警，定量估测大范围降水，风场信息，改善高分辨率数值天气预报模式的初始场。</p>
+</div>
+<div class="section" id="id3">
+<h2>新一代天气雷达系统的主要构成<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>新一代天气雷达系统的主要构成包括，雷达数据采集子系统（RDA）、雷达产品生成子系统（RPG）、主用户终端子系统（PUP）、连接线路及附属设备四个部分。</p>
+<div class="section" id="rda">
+<h3>雷达数据采集子系统（RDA）<a class="headerlink" href="#rda" title="永久链接至标题">¶</a></h3>
+<p>雷达数据采集子系统（RDA）主要结构为天线、发射机、接收机、信号处理。
+发射机发射射频信号，功率达750KW；
+信号处理器(硬件信号处理器（与接收机接口交换数据，对数据预处理，接收并处理来自A/D变换器的数据，送往可编程信号处理器）和可编程信号处理器）：完成三个任务：A/D转换，地物去杂波、距离去折叠；
+监控计算机：监控和标定RDA硬件、形成RDA基数据和信息头数据（时间、仰角、标定参数等）、管理宽带通讯、控制RDA和控制信号处理等。</p>
+<div class="section" id="scan-strategy">
+<h4>扫描方式（scan strategy）<a class="headerlink" href="#scan-strategy" title="永久链接至标题">¶</a></h4>
+<p>扫描方式规定了雷达在一次体积扫描（volume scan）中使用多少仰角和时间。
+WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
+<ol class="arabic simple">
+<li>5分钟完成14个不同仰角上的扫描（14/5）</li>
+<li>6分钟完成9个不同仰角上的扫描（9/6）</li>
+<li>10分钟完成5个不同仰角上的扫描（5/10）</li>
+</ol>
+</div>
+<div class="section" id="vcp-volume-cover-pattern">
+<h4>体扫模式(VCP，Volume Cover Pattern）<a class="headerlink" href="#vcp-volume-cover-pattern" title="永久链接至标题">¶</a></h4>
+<p>扫描方式确定了一次体积扫中使用多少个仰角，而体扫模式则规定了在雷达的圆锥扫描过程中使用哪些仰角进行扫描。</p>
+<p>CINRAD-SA雷达可有20个不同的VCP，目前只定义了其中的4个，分别为VCP11、VCP21、VCP31、VCP32（未定义）。</p>
+<p>#TODO: VCP11、VCP21、VCP31速览</p>
+</div>
+<div class="section" id="operational-mode">
+<h4>工作模式（Operational Mode）<a class="headerlink" href="#operational-mode" title="永久链接至标题">¶</a></h4>
+<p>雷达的工作模式决定了使用的VCP扫描模式，一般工作模式有降水模式和晴空模式。</p>
+<p>工作模式A：降水模式使用VCP11或VCP21，相应的扫描方式分别为14/5（5分钟完成14个仰角体扫）和9/6（6分钟完成9个仰角体扫）。</p>
+<p>工作模式B：晴空模式使用VCP31或VCP32，两者都使用扫描方式5/10（10分钟完成5个仰角体扫）。</p>
+</div>
+</div>
+<div class="section" id="rpg">
+<h3>雷达产品生成系统（RPG）<a class="headerlink" href="#rpg" title="永久链接至标题">¶</a></h3>
+<p>雷达产品生成系统RPG，从雷达数据采集子系统RDA接收数字化的基本数据，对其进行处理和生成各种产品，是控制整个雷达系统的指令中心。其生成的产品包括基本产品：强度、速度和谱宽，和导出产品：由基数据经过特定的算法得到的（33种）。</p>
+<p>RPG的操作界面为雷达控制台（UCP），其对RDA、RPG和宽带通讯直接控制，具有应用终端（发布命令和修正参数）和系统控制台（操作员与RPG的OS的交互来达到文件维护、文件和数据的备份以及软件安装等）的双重功能。</p>
+</div>
+<div class="section" id="pup">
+<h3>主用户终端子系统（PUP）<a class="headerlink" href="#pup" title="永久链接至标题">¶</a></h3>
+<p>主用户终端子系统PUP的主要功能是获取、存储和显示产品、状态监视和产品编辑注释。一部雷达可以配多台PUP，产品的获取是通过PUP向RPG发出请求的方式完成。常规、一次性请求、产品－预警配对。</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>气象目标对雷达电磁波的散射<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>电磁辐射包括太阳辐射、热辐射、无线电波等，它的波长范围很广，从 10^{-10} 微米（宇宙射线）到 10^{10} 微米（无线电波）。天气雷达所使用的电磁波位于微波波段1mm-30cm波长范围内，主要波长为10cm（S波段）， 5cm（C波段），3cm（X波段）。</p>
+<p>气象目标对雷达电磁波的散射是雷达探测大气的基础。散射是全方位的，散射是不均匀的。</p>
+<p>大气中引起雷达波散射的主要物质：大气介质（大气气体分子的散射，大气介质折射指数分布不均匀引起的散射与反射）；云和降水粒子（因相态、几何形状而不同）。降水粒子包括：雨滴、雪花、冰雹等，对天气雷达发射的电磁波起显著散射作用的是云和降水粒子。</p>
+<div class="section" id="id5">
+<h3>散射的分类<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>当雷达发射的电磁波波长 <span class="math notranslate nohighlight">\(\lambda\)</span> 一定时，粒子的散射情况主要取决于粒子直径 d 与波长  <span class="math notranslate nohighlight">\(\lambda\)</span> 之比。</p>
+<p>瑞利散射： <span class="math notranslate nohighlight">\(d &lt;&lt; \lambda\)</span> 或 <span class="math notranslate nohighlight">\(\alpha = \frac{2 \pi a}{\lambda} &lt; 0.13\)</span> 时的小球形粒子的散射</p>
+<p>米（Mie）散射： <span class="math notranslate nohighlight">\(d \approx \lambda\)</span> 或 <span class="math notranslate nohighlight">\(\alpha  = \frac{2 \pi a}{\lambda} \geq 0.13\)</span> 时的小球形粒子的散射。</p>
+</div>
+<div class="section" id="id6">
+<h3>雷达截面<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>能流密度：垂直于入射能单位横截面积上的能量，随着距离的增大，其能流密度迅速减小。</p>
+<div class="math notranslate nohighlight">
+\[S_s = \frac{S_i}{R^2} \beta(\theta, \phi)\]</div>
+<div class="section" id="id7">
+<h4>后向散射截面<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
+<p>后向散射截面：设有一理想散射体，其截面为 <span class="math notranslate nohighlight">\(\sigma\)</span> ，它能全部接受到其上的电磁波能量，并全部均匀地向四周散射，
+若该理想散射体返回雷达天线处的电磁波能流密度，恰好等于同距离上实际散射体返回雷达天线的电磁波能流密度，
+则该理想散射体的截面 <span class="math notranslate nohighlight">\(\sigma\)</span> 称为实际散射体的后向散射截面。</p>
+<p>入射能流密度 <span class="math notranslate nohighlight">\(s_i\)</span> 乘上雷达界面 <span class="math notranslate nohighlight">\(\sigma\)</span> 得到的是这个散射粒子的总散射功率 <span class="math notranslate nohighlight">\(P_s\)</span> ，即</p>
+<div class="math notranslate nohighlight">
+\[P_s = s_i \sigma = s_i 4 \pi \beta(\pi)\]</div>
+<p>当散射粒子以这个总散射功率 <span class="math notranslate nohighlight">\(P_s\)</span> 向空间做各项同行散射时，散射到天线处的后向散射能流密度 <span class="math notranslate nohighlight">\(S_s(\pi)\)</span> 正好与其在天线处造成的实际后向散射能流密度的大小一致。</p>
+<p>后向散射截面是一个虚拟的面积，用来定量表示粒子后向散射能力的强弱，在入射能流密度一定时，后向散射界面越大，粒子的后向散射能力越强，在相同条件下，产生的回波信号也越强。</p>
+<p>对于普通球形粒子，在瑞利散射条件下，其雷达界面为，</p>
+<div class="math notranslate nohighlight">
+\[\sigma = \frac{64 \pi^5 r^6}{\lambda^4} | \frac{m^2 - 1}{m^2 + 2} | = \frac{\pi^5 D^6}{\lambda^4} | \frac{m^2 - 1}{m^2 + 2} |\]</div>
+<p>粒子的散射能力与粒子的大小，形状、电学特性有关，目前能对其散射做出精确解析解的只有少数几何形状比较特殊的粒子，如：圆球形，圆柱形，椭球形。
+气象上的云滴、雨滴等粒子一般近似地认为圆球形或椭球形。小水球的|K|2值为0.93左右，小冰球的|K|2值为0.197，所以小冰球的后向散射截面大约只有同样大小的小水球的1/5。</p>
+<p>大气中滴谱半径，云滴为5~10μm，不超过50μm；雨滴为0.25~1.5mm，以0.35~0.45mm最多，强对流性降水的雨滴有大于2mm的。但当其大于3mm时就会破裂。D的最大取值约为0.04λ 。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(\lambda = 10cm\)</span></td>
+<td>雨滴:0.01-0.5cm（所有的雨滴）、雪花：0.01-3cm（大部分雪花）、冰雹：0.5-2.0cm（小到中等雹）</td>
+</tr>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(\lambda = 5cm\)</span></td>
+<td>雨滴:0.01-0.5cm（所有的雨滴）、雪花：0.01-1cm（小雪花）、冰雹：0.5-0.75cm（小雹）</td>
+</tr>
+<tr class="row-odd"><td><span class="math notranslate nohighlight">\(\lambda = 3cm\)</span></td>
+<td>雨滴:0.01-0.5cm（所有的雨滴）、冰晶：0.01-0.5cm（单冰晶）、软雹：0.1-0.5cm（软雹）</td>
+</tr>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(\lambda = 0.8cm\)</span></td>
+<td>雨滴:0.01-0.15cm（云和毛毛雨）、冰晶：0.01-0.15cm（单冰晶）</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">是否雷达波长 λ 越短，雷达的探测能力就越强？</p>
+</div>
+</div>
+<div class="section" id="id8">
+<h4>不同粒子散射能力对比<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
+<p><strong>冰水混合球</strong> ：多孔海绵状冰雹，雪花、雪团下降融化及冰球融化的后期。</p>
+<p><strong>水包冰球</strong> ：冰粒表面融化、冰雹与过冷水滴碰并来不及冻结。</p>
+<ol class="arabic simple">
+<li>散射能力随D的增加而增大；</li>
+<li>图形比对可以看出，在D较小时，水球的散射能力约冰球的5－6倍，在D较大时（60~80）两者差不多，但D&gt;80mm，水球的散射能力比冰球小(只有0.04~0.2倍）；</li>
+<li>外包水膜的散射介于冰晶和水之间。</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>衰减<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>衰减指电磁波能量沿传播路径减弱的现象，造成衰减的原因是电磁波传播路径上气体分子和粒子（云、雨、冰雹）的散射和吸收转变化为热能或其他形式的能量。</p>
+<p>定义 <strong>衰减系数</strong> 表示介质对电磁波衰减能力的强弱，符号为 k ，其等于通过单位距离后电磁波能流密度减少的分贝数。</p>
+<div class="math notranslate nohighlight">
+\[k = -10lg\frac{P}{P_0}\]</div>
+<p>上式中的 <span class="math notranslate nohighlight">\(P_0\)</span> 表示没有衰减时的电磁波能流密度，P为通过单位距离后电磁波的能流密度。</p>
+<p>当电磁波传播到距离 r 处，并被粒子散射回雷达处，此过程中介质衰减引起的回波功率减少的分贝数为，</p>
+<div class="math notranslate nohighlight">
+\[10lg\frac{\bar{P_r}}{\bar{P_{r0}}} = -2 \int_0^r k dr\]</div>
+<p>上式中的 <span class="math notranslate nohighlight">\(\bar{P_{r0}}\)</span> 和 <span class="math notranslate nohighlight">\(\bar{P_{r}}\)</span> 分别表示没有介质衰减和有介质衰减时的回波功率，上式可变形为，</p>
+<div class="math notranslate nohighlight">
+\[\bar{P_r} = \bar{P_{r0}} \cdot 10^{-2 \int_0^r k dr}\]</div>
+<ol class="arabic simple">
+<li>衰减由大气中的云、雨、雪、冰雹、水汽和其他气体对雷达电磁波的散射和吸收所导致</li>
+<li>在强降水情况下，C波段雷达的衰减可能是严重的，从而影响降水估计</li>
+<li>雨造成的衰减比云要强的多，冰雹造成的衰减最强</li>
+<li>现代天气雷达可以通过算法来识别和订正衰减</li>
+</ol>
+<div class="section" id="id10">
+<h3>气体的衰减<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<p>气体对电磁波的衰减主要为水汽在1.35±0.18cm和0.2cm波长的吸收带以及氧气在0.5cm波长的吸收带，
+对于发射厘米波的天气雷达而言，气体衰减对厘米波影响小，量级约为 <span class="math notranslate nohighlight">\(10^{－3} ~ 10^{－4} dB/km\)</span></p>
+<div class="figure align-center" id="id24">
+<img alt="大气气体对10cm雷达波的衰减" src="_images/气体对10cm雷达波的衰减.png" />
+<p class="caption"><span class="caption-text">图 大气气体对10cm雷达波的衰减</span></p>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>云的衰减<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>云滴为半径小于100μm的水滴或冰晶，云造成的衰减主要是由于吸收作用引起。</p>
+<dl class="docutils">
+<dt>云衰减的特性 :</dt>
+<dd><ol class="first last arabic simple">
+<li>液态云温度降低，云衰减增大</li>
+<li>冰云的衰减远小于同样含水量的水云的衰减（小2个量级）</li>
+<li>随波长的增加，云衰减迅速减小，波长由3变到10cm时，衰减减小一个量级</li>
+<li>对波长5、10 厘米波段，云造成的衰减总衰减量很小，通常可以忽略</li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="id12">
+<h3>雨的衰减<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<p>实际应用中，把雨的衰减表示成降水率（雨强）的函数，雨的衰减系数与雨强近于成正相关关系，
+同时雨的衰减系数与雷达波长有关，波长越短，衰减越大，随着波长的增加，雨对雷达波的衰减迅速减小。</p>
+<div class="figure align-center" id="id25">
+<a class="reference internal image-reference" href="_images/雨的衰减系数.png"><img alt="雨的衰减系数" src="_images/雨的衰减系数.png" style="width: 484.0px; height: 326.40000000000003px;" /></a>
+<p class="caption"><span class="caption-text">图 雨的衰减系数</span></p>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>雪的衰减<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>湿雪的衰减远大于干雪的衰减（形状因子和相态），当雷达波长为 λ= 3 cm，湿雪的衰减是干雪的5倍。</p>
+</div>
+<div class="section" id="id14">
+<h3>冰雹的衰减<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<p>降雹可以造成雷达波严重的衰减，对3cm波长，某些场合，衰减系数可以超过4dm/km，对于5.5cm波长，也可以有很大的衰减。</p>
+<p>表 冰雹的衰减系数（db/km）</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="33%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&#160;</th>
+<th class="head">&#160;</th>
+<th class="head" colspan="3">冰雹直径（cm）</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>波长（cm）</td>
+<td>水膜厚度（cm）</td>
+<td>0.97</td>
+<td>1.93</td>
+<td>2.89</td>
+</tr>
+<tr class="row-odd"><td>3.21</td>
+<td>0</td>
+<td>0.120</td>
+<td>1.210</td>
+<td>1.660</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>0.01</td>
+<td>0.910</td>
+<td>3.010</td>
+<td>3.460</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>0.05</td>
+<td>1.680</td>
+<td>3.720</td>
+<td>4.030</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>0.1</td>
+<td>1.500</td>
+<td>3.490</td>
+<td>3.790</td>
+</tr>
+<tr class="row-odd"><td>5.5</td>
+<td>0</td>
+<td>0.015</td>
+<td>0.180</td>
+<td>0.330</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>0.01</td>
+<td>0.190</td>
+<td>0.790</td>
+<td>1.220</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>0.05</td>
+<td>0.560</td>
+<td>2.480</td>
+<td>2.820</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>0.1</td>
+<td>0.940</td>
+<td>2.300</td>
+<td>2.600</td>
+</tr>
+<tr class="row-odd"><td>10.0</td>
+<td>0</td>
+<td>0.002</td>
+<td>0.011</td>
+<td>0.034</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>0.01</td>
+<td>0.051</td>
+<td>0.150</td>
+<td>0.190</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>0.05</td>
+<td>0.058</td>
+<td>0.340</td>
+<td>0.600</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>0.1</td>
+<td>0.080</td>
+<td>0.890</td>
+<td>1.180</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id15">
+<h3>衰减引起回波失真<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<p>下图展示了一个虚拟的圆形雨区，直径8km，中心雨强100mm/h情况下3.2cm波长雷达和10cm波长雷达的回波图像，
+可以发现10cm波长雷达由于衰减小，等回波强度线与等降水强度线基本一致，而3cm波长雷达，由于衰减严重，
+雷达径向方向上远离雷达一侧的雨区没有表现，使回波范围缩小，形状失真。</p>
+<div class="figure align-center" id="id26">
+<img alt="雨区的衰减" src="_images/雨区的衰减.png" />
+<p class="caption"><span class="caption-text">图 虚拟的雨区（a）以及在3.2cm（b）和10cm（c）雷达上显示的回波强度分布</span></p>
+</div>
+<p>在一块较强回波的相对雷达径向的后侧，可由前侧强回波中的降水粒子衰减造成无回波的情况，如下图，</p>
+<div class="figure align-center" id="id27">
+<a class="reference internal image-reference" href="_images/衰减导致的强回波后无回波.png"><img alt="衰减导致的强回波后无回波" src="_images/衰减导致的强回波后无回波.png" style="width: 644.8000000000001px; height: 396.8px;" /></a>
+<p class="caption"><span class="caption-text">图 衰减导致的强回波后无回波</span></p>
+</div>
+<p>下图显示了一条飑线过境前后的C波段雷达回波图，在飑线到达雷达站时，雷达发射的电磁波要穿过其线状强对流，
+造成了雷达径向方向上，飑线南北两侧回波的强烈衰减，当飑线过境后，衰减减弱。</p>
+<div class="figure align-center" id="id28">
+<a class="reference internal image-reference" href="_images/squall_atten.jpg"><img alt="飑线衰减" src="_images/squall_atten.jpg" style="width: 504.0px; height: 319.20000000000005px;" /></a>
+<p class="caption"><span class="caption-text">图 飑线过境时南北两侧回波强度在5cm波长雷达上出现显著的衰减</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="id16">
+<h2>折射<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
+<p>当电磁波从一种介质进入另一种介质时，由于不同介质折射系数的不同，将导致电磁波路径的弯曲。
+当大气出现逆温或低层湿度随高度的剧烈变化，使得大气折射指数随高度变化，电磁波会产生折射，
+从而使雷达波束传播路径发生弯曲，电磁波的折射对天气雷达的探测有重要的影响。</p>
+<div class="section" id="id17">
+<h3>折射指数<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id18">
+<h4>标准折射<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id19">
+<h4>负折射<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id20">
+<h4>超折射<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="id21">
+<h2>距离折叠<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h2>
+<p>距离折叠示意动画</p>
+<video controls src="_static/range_folding_animation_2.mp4"></video></div>
+<div class="section" id="id22">
+<h2>速度模糊<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h2>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/brown_wood_jet_veering_aliased.jpg"><img alt="飑线衰减" src="_images/brown_wood_jet_veering_aliased.jpg" style="width: 464.0px; height: 384.0px;" /></a>
+</div>
+</div>
+<div class="section" id="id23">
+<h2>零度层亮带<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h2>
+<p>下面动画展示了雪花下落到一个更暖的空气中，并且在暖层中部分融化聚合，从而使得雷达反射率增加，称为零度层亮带，随后雪花逐渐融化为雨滴，使得雷达反射率又减小。</p>
+<video controls src="_static/brightband.mp4"></video></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to WeatherRadar’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, wqshen.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            LANGUAGE:'ZH_CN',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
