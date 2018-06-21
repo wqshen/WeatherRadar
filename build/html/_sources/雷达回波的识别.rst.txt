@@ -28,16 +28,17 @@
 
 .. figure:: _static/bright_band_noaa.print.png
 	:align: center
-	:alt: RHI图上的零度层亮带
+	:alt: 时间高度剖面图上连续存在几小时的零度层亮带
 
-	图：RHI图上的零度层亮带
+	图：时间高度剖面图上连续存在几小时的零度层亮带
 
 
 三体散射回波
 ------------------------
-A particular signature to note for the presence of hail is called the Three Body Scatter Spike, or TBSS. A TBSS generally appears as a 10-30 km long (6-20 mi), low reflectivity (< 20 dBZ), mid-level echo "spike" that extends outward along a radar beam from a high reflectivity core. This echo spike is an artifact, formed when portions of the radar pulses are scattered to the ground and then reflected off the ground and back into the hail core, where they are interpreted by the radar as being from a location farther away.
+三体散射回波（Three Body Scatter Spike，TBSS）是大冰雹出现的一个指示，TBSS的长度约10-30km，具有较低的反射率（通常小于20 dBZ），出现在中层沿波束方向强的反射率核的外侧，形似“长钉”。这种长钉回波是虚假回波，它的形成原因是雷达发射的脉冲电磁波被大冰雹散射到
+地面后，再经地面散射回冰雹核，最后被冰雹核再次散射回雷达并被雷达接收机接收，雷达将其推算到一个距离冰雹核更远的位置。
 
-A TBSS is a nearly certain indicator of large hail, as it generally occurs when the target size is close to the same as the wavelength of the radar pulse. It typically only occurs within the strong convection found in supercell thunderstorms.
+TBSS是大冰雹的是一个特定的指示器，因为它基本出现在目标物大小与雷达脉冲波长向近的时候，通常可在超级单体风暴的强对流中发现它们。
 
 .. figure:: _static/KUEX_20080726_bref_1918Z.jpg
 	:align: center
@@ -46,8 +47,53 @@ A TBSS is a nearly certain indicator of large hail, as it generally occurs when 
 	图：三体散射回波（TBSS，来源:COMET）
 
 
+旁瓣回波
+---------------------
+
+
+
 非气象回波
 -------------------------------
+非气象回波是由于一些非气象类的目标体对电磁波的散射所产生的回波和由于雷达性能而引起的虚假回波。
+这类回波往往根据其所产生的目标体的类型，将回波分为：
+地物回波、海浪回波、晴空回波、同波长干扰回波、超折射回波和旁瓣假回波等。
+    
+可通过连续跟踪、动态显示或抬高仰角等手段，将其与降水回波区分。
+
+
+地物回波
+^^^^^^^^^^^^^^^^
+地物回波是指由山地及其上的各种建筑物等对电磁波的散射所产生的回波。
+
+产生地物回波的目标体有三类：
+- 一是地表，包括山脉、丘陵、岛屿、海岸线等; 
+- 二是地表上的人工建筑物；
+- 三是超折射回波（虚假回波）。
+
+地物回波特点：边缘清晰，位置固定，强度少变。呈小柱状，高度低。
+
+
+.. figure:: _static/groundclutter.png
+	:align: center
+	:alt: 特定大气条件下，波束折射到地面产生强的地物回波
+
+	图：特定大气条件下，波束超折射碰到地面产生强的地物回波（左右分别为0.5°仰角的反射率和速度图，上下图时间间隔约半小时，来源: `Luke Madaus <http://lukemweather.blogspot.com/2011/05/seeing-ground-clutter-on-radar.html>`_ ）
+
+晴空回波
+^^^^^^^^^^^^^^^^^^
+回波强度位于0－10dBz,高度2KM以下，卫星云图上为晴空区。晴空回波主要出现在雷达周围较近的距离，并且在暖季出现的更加频繁。
+
+晴空回波有两种可能的原因：
+	- 一种说法是折射指数的梯度，当折射指数随高度剧烈变化（低层大气不稳定），在地面以上风随高度快速增加的情况下，基本上暗示湍流的存在（又：水汽的脉动导致微尺度的大气折射）
+	- 另一种是大气中的昆虫，灰尘，谷壳和其他微粒的散射，需要能够散射回到雷达的足够大的能量
+
+
+.. figure:: _static/晴空回波.png
+	:align: center
+	:scale: 60%
+	:alt: 晴空回波
+
+	图：晴空回波（来源:汤兴芝PPT）
 
 
 生物回波
