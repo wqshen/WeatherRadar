@@ -136,6 +136,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#id32">雷达气象方程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id33">距离折叠</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id34">速度模糊</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id35">多普勒天气雷达的局限</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="雷达回波的识别.html">雷达回波的识别</a></li>
@@ -420,7 +421,7 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 <h3>气体的衰减<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <p>气体对电磁波的衰减主要为水汽在1.35±0.18cm和0.2cm波长的吸收带以及氧气在0.5cm波长的吸收带，
 对于发射厘米波的天气雷达而言，气体衰减对厘米波影响小，量级约为 <span class="math notranslate nohighlight">\(10^{－3} ~ 10^{－4} dB/km\)</span></p>
-<div class="figure align-center" id="id35">
+<div class="figure align-center" id="id36">
 <img alt="大气气体对10cm雷达波的衰减" src="_images/气体对10cm雷达波的衰减.png" />
 <p class="caption"><span class="caption-text">图 大气气体对10cm雷达波的衰减</span></p>
 </div>
@@ -443,7 +444,7 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 <h3>雨的衰减<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
 <p>实际应用中，把雨的衰减表示成降水率（雨强）的函数，雨的衰减系数与雨强近于成正相关关系，
 同时雨的衰减系数与雷达波长有关，波长越短，衰减越大，随着波长的增加，雨对雷达波的衰减迅速减小。</p>
-<div class="figure align-center" id="id36">
+<div class="figure align-center" id="id37">
 <a class="reference internal image-reference" href="_images/雨的衰减系数.png"><img alt="雨的衰减系数" src="_images/雨的衰减系数.png" style="width: 484.0px; height: 326.40000000000003px;" /></a>
 <p class="caption"><span class="caption-text">图 雨的衰减系数</span></p>
 </div>
@@ -557,18 +558,18 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 <p>下图展示了一个虚拟的圆形雨区，直径8km，中心雨强100mm/h情况下3.2cm波长雷达和10cm波长雷达的回波图像，
 可以发现10cm波长雷达由于衰减小，等回波强度线与等降水强度线基本一致，而3cm波长雷达，由于衰减严重，
 雷达径向方向上远离雷达一侧的雨区没有表现，使回波范围缩小，形状失真。</p>
-<div class="figure align-center" id="id37">
+<div class="figure align-center" id="id38">
 <img alt="雨区的衰减" src="_images/雨区的衰减.png" />
 <p class="caption"><span class="caption-text">图 虚拟的雨区（a）以及在3.2cm（b）和10cm（c）雷达上显示的回波强度分布</span></p>
 </div>
 <p>在一块较强回波的相对雷达径向的后侧，可由前侧强回波中的降水粒子衰减造成无回波的情况，如下图，</p>
-<div class="figure align-center" id="id38">
+<div class="figure align-center" id="id39">
 <a class="reference internal image-reference" href="_images/衰减导致的强回波后无回波.png"><img alt="衰减导致的强回波后无回波" src="_images/衰减导致的强回波后无回波.png" style="width: 644.8000000000001px; height: 396.8px;" /></a>
 <p class="caption"><span class="caption-text">图 衰减导致的强回波后无回波</span></p>
 </div>
 <p>下图显示了一条飑线过境前后的C波段雷达回波图，在飑线到达雷达站时，雷达发射的电磁波要穿过其线状强对流，
 造成了雷达径向方向上，飑线南北两侧回波的强烈衰减，当飑线过境后，衰减减弱。</p>
-<div class="figure align-center" id="id39">
+<div class="figure align-center" id="id40">
 <a class="reference internal image-reference" href="_images/squall_atten.jpg"><img alt="飑线衰减" src="_images/squall_atten.jpg" style="width: 504.0px; height: 319.20000000000005px;" /></a>
 <p class="caption"><span class="caption-text">图 飑线过境时南北两侧回波强度在5cm波长雷达上出现显著的衰减</span></p>
 </div>
@@ -630,7 +631,7 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 为 <span class="math notranslate nohighlight">\(K = -\frac{dn}{dh} = 4 \times 10 ^{-5} \cdot km^{-1}\)</span> ，雷达波束路径向下
 弯曲，这种折射情况称为标准大气折射（Normal Refraction），
 代表了中纬度对流层中大气折射的一般情况。电磁波曲率半径约25000km，约4倍于地球半径。</p>
-<div class="figure align-center" id="id40">
+<div class="figure align-center" id="id41">
 <img alt="标准折射" src="_images/标准折射.jpg" />
 <p class="caption"><span class="caption-text">图：标准折射</span></p>
 </div>
@@ -639,7 +640,7 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 <h3>负折射<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
 <p>如果波束不是向下弯曲，而是向上弯曲，出现这种折射时，称为负折射（subrefraction），此时
 曲率 <span class="math notranslate nohighlight">\(K &lt; 0\)</span> ，等效地球半径小于实际地球半径。</p>
-<div class="figure align-center" id="id41">
+<div class="figure align-center" id="id42">
 <img alt="负折射" src="_images/负折射.jpg" />
 <p class="caption"><span class="caption-text">图：负折射</span></p>
 </div>
@@ -660,7 +661,7 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 然后再弯曲到地面，再经地面反射，重复多次，雷达波束在地面和某层大气之间，依靠地面的反射向前传播，
 与波导管中的微波传播相似，故称大气波导（ducting）传播，又称超折射（superrefraction）。此时波束折射超过标准折射，
 曲率 <span class="math notranslate nohighlight">\(K &gt; 15.7 \times 10^{-5} km^{-1}\)</span> ，等效地球半径 <span class="math notranslate nohighlight">\(R_m &lt; 0\)</span> 。</p>
-<div class="figure align-center" id="id42">
+<div class="figure align-center" id="id43">
 <img alt="超折射和波导" src="_images/超折射.jpg" />
 <p class="caption"><span class="caption-text">图：超折射与波导</span></p>
 </div>
@@ -680,7 +681,7 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 这能够使雷达探测到距离较远的降水，但是可能超过最大不模糊距离。</p>
 </li>
 <li><p class="first">超折射条件下，雷达波束可能接触地面目标，从而产生在雷达图像上产生地物杂波，通常称之为“异常传播”。</p>
-<div class="figure align-center" id="id43">
+<div class="figure align-center" id="id44">
 <img alt="异常传播" src="_images/AP_terrain_example.jpg" />
 <p class="caption"><span class="caption-text">图：异常传播导致雷达波束接触到一些局地地形（来源：COMET）</span></p>
 </div>
@@ -691,7 +692,7 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 <div class="section" id="id22">
 <h3>波束中心高度<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
 <p>在标准大气条件下，可计算不同波束仰角情况下，波束中心高度随距离的变化，从而可用于分析回波出现的高度。</p>
-<div class="figure align-center" id="id44">
+<div class="figure align-center" id="id45">
 <img alt="不同仰角波束中心高度随距离的变化" src="_images/rangevsheight.jpg" />
 <p class="caption"><span class="caption-text">图：不同仰角波束中心高度随距离的变化</span></p>
 </div>
@@ -746,7 +747,7 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 <div class="section" id="id25">
 <h3>脉冲宽度 <span class="math notranslate nohighlight">\(\tau\)</span><a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
 <p>脉冲宽度 <span class="math notranslate nohighlight">\(\tau\)</span> （脉冲持续时间）是发射每一个脉冲的持续时间，通常以微秒度量。</p>
-<div class="figure align-center" id="id45">
+<div class="figure align-center" id="id46">
 <a class="reference internal image-reference" href="_images/pulse_power.jpg"><img alt="脉冲宽度与脉冲重复周期" src="_images/pulse_power.jpg" style="width: 560.0px; height: 236.8px;" /></a>
 <p class="caption"><span class="caption-text">图：脉冲宽度与脉冲重复周期（来源：<a class="reference external" href="http://techsimplified.zohosites.com/pulsed-radar.html">http://techsimplified.zohosites.com/pulsed-radar.html</a>）</span></p>
 </div>
@@ -777,6 +778,13 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 <div class="last math notranslate nohighlight">
 \[\frac{2R_2}{c} = \frac{2R_1}{c} + \tau \Longrightarrow R_2 - R_1 = \frac{c \tau}{2} = \frac{h}{2}\]</div>
 </div>
+<p>有效照射体积：在波束宽度 <span class="math notranslate nohighlight">\(\theta_h, \theta_v\)</span> 范围内，粒子所产生的回波能同时到达天线的空间体积。
+由于 <span class="math notranslate nohighlight">\(\theta_h, \theta_v\)</span> 通常很小，雷达有效照射体积可以近似看做椭圆锥体，其表达式为，</p>
+<div class="math notranslate nohighlight">
+\[V = \pi \Big(r \frac{\theta_h}{2} \Big) \Big(r \frac{\theta_v}{2} \Big) \frac{h}{2}\]</div>
+<p>对于圆抛物面天线、而言， <span class="math notranslate nohighlight">\(\theta_h = \theta_v\)</span> ，即雷达波束的有效照射体积为，</p>
+<div class="math notranslate nohighlight">
+\[V = \pi \Big(r \frac{\theta}{2} \Big)^2  \frac{h}{2}\]</div>
 </div>
 <div class="section" id="id27">
 <h3>最小可测功率<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h3>
@@ -784,9 +792,7 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 </div>
 <div class="section" id="id28">
 <h3>脉冲功率<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
-<p>脉冲功率指各向同性天线在距离其R处的能流密度，其表达式为，</p>
-<div class="math notranslate nohighlight">
-\[S_{av} = \frac{P_t}{4 \pi R^2}\]</div>
+<p>发射机发出的脉冲，其峰值功率称为脉冲发射功率，为了增强天气雷达的探测能力，其脉冲发射功率常常很大，我国新一代天气雷达CINRAD-SA的脉冲功率在650~800kW之间。</p>
 </div>
 <div class="section" id="prtprf">
 <h3>脉冲重复周期PRT与脉冲重复频率PRF<a class="headerlink" href="#prtprf" title="永久链接至标题">¶</a></h3>
@@ -808,6 +814,9 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 </div>
 <div class="section" id="id31">
 <h3>天线增益<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
+<p>各向同性天线在距离其R处的能流密度，其表达式为，</p>
+<div class="math notranslate nohighlight">
+\[S_{av} = \frac{P_t}{4 \pi R^2}\]</div>
 <p>天线最大辐射方向的能流密度与各项同性辐射天线的能流密度之比 <span class="math notranslate nohighlight">\(G = \frac{S_{max}}{S_{av}}\)</span> 称为定向辐射天线的增益，
 其代表由方向性天线把辐射能量集中到某个方向上，使这个方向的辐射能流密度增加为各项同性天线的G倍。</p>
 </div>
@@ -824,6 +833,33 @@ WSR-88D 和 CINRAD WSR-98D 使用三种扫描方式：</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="_images/brown_wood_jet_veering_aliased.jpg"><img alt="飑线衰减" src="_images/brown_wood_jet_veering_aliased.jpg" style="width: 464.0px; height: 384.0px;" /></a>
 </div>
+</div>
+<div class="section" id="id35">
+<h2>多普勒天气雷达的局限<a class="headerlink" href="#id35" title="永久链接至标题">¶</a></h2>
+<p>多普勒雷达的最大不模糊距离和最大不模糊速度之间存在相互制约的关系，这是天气雷达探测中的两难问题。</p>
+<p>最大不模糊速度为，</p>
+<div class="math notranslate nohighlight">
+\[V_{max} = PRF \lambda / 4\]</div>
+<p>上式表明了如果想要测量更大的径向速度，那么必须选用更大的波长或更高的脉冲重复频率。</p>
+<p>最大不模糊距离为，</p>
+<div class="math notranslate nohighlight">
+\[R_{max} = c / 2PRF\]</div>
+<p>其中，c为光速。可以发现，脉冲重复频率PRF同时出现在了最大不模糊速度和最大不模糊距离的表达式中，
+然而不幸的是，一个在分子项，一个在分母项，这就导致了“多普勒两难问题”，即</p>
+<div class="math notranslate nohighlight">
+\[V_{max}R_{max} = c \lambda / 8\]</div>
+<p>上式表明，对于一个给定的雷达波长而言，如果想要观测更大的径向速度，那么它的最大探测距离必然要减小，因为二者的
+乘积为常数。</p>
+<div class="figure align-center" id="id47">
+<a class="reference internal image-reference" href="_images/doppler_dilemma_diagram.jpg"><img alt="多普勒两难图" src="_images/doppler_dilemma_diagram.jpg" style="width: 484.40000000000003px; height: 450.40000000000003px;" /></a>
+<p class="caption"><span class="caption-text">图：多普勒两难，粗黑线为雷达波长 <span class="math notranslate nohighlight">\(\lambda\)</span> ，横坐标为最大不模糊距离（km），纵坐标为最大不模糊速度（m/s），顶部给出了脉冲重复频率（Hz）</span></p>
+</div>
+<ul class="simple">
+<li>一个很自然的想法是增加雷达的波长，从而能够同时增加 Vmax 和 Rmax ，然而更长的波长的雷达造价更加昂贵</li>
+</ul>
+<p>并且体积更大，且并不能与短波长雷达一样探测天气目标，因此使用长波长雷达并不是一个完备的方案。
+- 这一问题的结果是大部分多普勒天气雷达都会出现明显的距离模糊或者速度模糊亦或二者兼具
+- 通常，在体扫模式中的低仰角扫描时，分别以低脉冲重复频率和高脉冲重复频率扫描一次，而中层扫描则交替使用低脉冲重复频率和高脉冲重复频率，高仰角使用高脉冲重复频率，从而能够部分地兼顾最大不模糊速度和最大不模糊距离</p>
 </div>
 </div>
 

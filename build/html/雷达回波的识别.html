@@ -83,13 +83,28 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="多普勒天气雷达原理.html">多普勒天气雷达原理</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">雷达回波的识别</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">零度层亮带</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">三体散射回波</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">旁瓣回波</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">非气象回波</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id6">地物回波</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">晴空回波</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">生物回波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">气象回波</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">层状云降水回波</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">零度层亮带</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">积状云降水回波</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">层积混合降水回波</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">钩状回波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">弓形回波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v">V型缺口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">三体散射回波</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">非降水回波</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">边界层辐合线</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">非气象回波</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id13">旁瓣回波</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">地物回波</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">晴空回波</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">生物回波</a></li>
 </ul>
 </li>
 </ul>
@@ -162,57 +177,146 @@
   <div class="section" id="id1">
 <h1>雷达回波的识别<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
-<h2>零度层亮带<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p>零度层亮带表现为层状云回波中，较高仰角PPT图上的圆环状强回波带或RHI扫描中的同一高度的强回波区。</p>
+<h2>气象回波<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h3>层状云降水回波<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>层状云降水回波:分布面较均匀，梯度小，&gt;15，&lt;40,H&lt;8KM（纯粹的层状云降水回波较少见）,较高仰角上有零度层亮带，连续性降水或降雪</p>
+<p>层状云降水回波水平范围大、连绵成片、均匀幕状，RHI上，中高纬回波高度一般要低于6KM，降雪回波&lt;4KM,降雪回波强中心的强度&lt;20dBz，结构更为松散。边缘模糊、发毛的原因是衰减及脉冲宽度影响。</p>
+<div class="section" id="id4">
+<h4>零度层亮带<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h4>
+<p>零度层亮带表现为层状云回波中，较高仰角PPI图上的圆环状强回波带或RHI扫描中的同一高度的强回波区。</p>
 <p>其形成原因是高层冰晶下落过程中不断碰并聚合增长形成更大的雪花，增长使得反射率不断增加，直到接近融化层，
 随着粒子穿过0℃层，雪花开始融化，使得其外层覆盖一层水膜（高反射率因子），这使得反射率明显增加，
 随着雪花融化为液态水，使得粒子尺度减小（密度增加）并且大水滴有较大的下落末速度，减少了雷达取样体积内粒子
 的数浓度，从而使得反射率减低，上述过程使得雷达回波上出现孤立的水平高反射率层，通常出现在0℃等温线以下100m左右。</p>
 <p>下面动画展示了雪花下落到一个更暖的空气中，并且在暖层中部分融化聚合，从而使得雷达反射率增加，称为零度层亮带，随后雪花逐渐融化为雨滴，使得雷达反射率又减小。</p>
 <video controls src="_static/brightband.mp4"></video><p><em>动画来源：COMET</em></p>
-<div class="figure align-center" id="id9">
+<div class="figure align-center" id="id17">
 <a class="reference internal image-reference" href="_images/零度层亮带PPI.png"><img alt="PPI图上的零度层亮带" src="_images/零度层亮带PPI.png" style="width: 465.0px; height: 318.0px;" /></a>
 <p class="caption"><span class="caption-text">图：PPI图上的零度层亮带</span></p>
 </div>
-<div class="figure align-center" id="id10">
+<div class="figure align-center" id="id18">
 <img alt="时间高度剖面图上连续存在几小时的零度层亮带" src="_images/bright_band_noaa.print.png" />
 <p class="caption"><span class="caption-text">图：时间高度剖面图上连续存在几小时的零度层亮带</span></p>
 </div>
 </div>
-<div class="section" id="id3">
-<h2>三体散射回波<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id5">
+<h3>积状云降水回波<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>PPI：不规则块状、梯度大、孤立分散或呈带状、涡旋状或其它的形状，结构紧密、边界清晰，棱角分明、强度大。</p>
+<p>特点：发展迅速，生命史一般为几十分钟至1-3小时。又分为单体、超级单体，多单体（后两者常形成雷雨大风、冰雹、局地暴雨等灾害性天气）。</p>
+<p>其形成的暴雨具有很强的局地性，具有突发性强、时间短、降水强度大的特点，很容易形成城市积涝、山体滑坡等灾害。</p>
+</div>
+<div class="section" id="id6">
+<h3>层积混合降水回波<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>呈絮状，范围较大、边缘破碎、无明显边界，强度达40dBz以上。</p>
+<p>具有范围大、回波直径可达几百公里,持续时间长(长达数十小时)的特点，常产生暴雨、连续性暴雨和大暴雨 ,有时有不均匀亮带。</p>
+<p>在基本反射率因子垂直剖面图上回波高低起伏，高峰部分可达到雷暴的高度，有时还可观测到分布不均的零度层亮带结构。
+这类暴雨回波强度一般不大，强回波中心一般在40～55dBZ。强回波中心高度也比较低，一般在5km以下
+常与高空低槽、切变线、地面静止锋相联系，出现在其前后。回波顶多在10KM以上，层状云则以8KM为最多，超过－20℃以上，易形成降水。</p>
+<p>层状云降水下沉水汽为夹杂的对流云生长提供了充沛的水汽，进入积状云的是饱和空气，增加了水汽凝结从而释放更多的潜热，
+导致上升气流的加强以促进对流云的发展，同时积状云与周围空气交换引起的水分蒸发显著减小，因此积状云生存的时间长。</p>
+<p>另一方面，嵌入的积雨云对层状云有自然播撒作用，使得零度层亮带厚，降水强度较大，因此易产生暴雨（降水时间长、强度大）。
+层积混合降水的过程就是积云单体不断新生、发展、并入积层混合云主体的过程。</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>钩状回波<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id8">
+<h2>弓形回波<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="v">
+<h2>V型缺口<a class="headerlink" href="#v" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id9">
+<h2>三体散射回波<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <p>三体散射回波（Three Body Scatter Spike，TBSS）是大冰雹出现的一个指示，TBSS的长度约10-30km，具有较低的反射率（通常小于20 dBZ），出现在中层沿波束方向强的反射率核的外侧，形似“长钉”。这种长钉回波是虚假回波，它的形成原因是雷达发射的脉冲电磁波被大冰雹散射到
 地面后，再经地面散射回冰雹核，最后被冰雹核再次散射回雷达并被雷达接收机接收，雷达将其推算到一个距离冰雹核更远的位置。</p>
 <p>TBSS是大冰雹的是一个特定的指示器，因为它基本出现在目标物大小与雷达脉冲波长向近的时候，通常可在超级单体风暴的强对流中发现它们。</p>
-<div class="figure align-center" id="id11">
+<div class="figure align-center" id="id19">
 <img alt="三体散射回波（TBSS）" src="_images/KUEX_20080726_bref_1918Z.jpg" />
 <p class="caption"><span class="caption-text">图：三体散射回波（TBSS，来源:COMET）</span></p>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>旁瓣回波<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id10">
+<h2>非降水回波<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>天气雷达除可以获取降水回波外，还可以获取一些非降水特征，如风暴出流边界、边界层辐合线和冷锋、干线等造成的窄带回波。
+这些回波具有显著的气象意义，是预报雷雨大风需要关注的回波。</p>
+<div class="section" id="id11">
+<h3>边界层辐合线<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<p>边界层辐合线为不同气团之间的界面或地面附近的风场辐合线。边界层辐合线的确定可以判断在哪些地方可以有中尺度辐合上升提供雷暴的触发机制。
+因此在雷暴和强对流天气短时临近预报中一个重要分析就是边界层辐合线,它是风暴发生、发展、消亡临近预报的关键所在,
+多数雷暴生成在边界层辐合线附近（相应的垂直层结条件）。</p>
+<p><strong>边界层辐合的形式</strong></p>
+<ul class="simple">
+<li>天气尺度的冷锋或露点锋</li>
+<li>雷暴的出流边界（阵风锋）</li>
+<li>中尺度的海陆风辐合线</li>
+<li>由地表特征空间分布不均匀造成的辐合带</li>
+</ul>
+<p><strong>边界层辐合线的特点</strong></p>
+<ul class="simple">
+<li>强度图上：细长回波带，强度弱，Z值在15－30dBz之间，无降水，长度20~160KM，宽1~2KM，高1KM左右，因此是低层大气中的现象，一般出现在近雷达处，只有特强的在较远处可探测到。</li>
+<li>表现为地面附近的风场辐合线，有明显的降温和强的阵风，辐合线两侧平均径向速度变化大，但有时也表现为正负速度分界点零速度线。</li>
+</ul>
+<div class="figure align-center" id="id20">
+<img alt="边界层辐合线" src="_images/边界层辐合线.png" />
+<p class="caption"><span class="caption-text">图：边界层辐合线</span></p>
 </div>
-<div class="section" id="id5">
-<h2>非气象回波<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p><strong>边界层辐合线与风暴发生发展的关系</strong></p>
+<ul class="simple">
+<li>在辐合线交汇处，如大气垂直层结有利于对流发展，则几乎可以肯定会有风暴发生。</li>
+<li>如辐合线附近本身有风暴，则会加速发展。</li>
+<li>根据辐合线与风暴的相对位置关系可以判断其是发展、维持或减弱。</li>
+</ul>
+<p>下图给出的是2004年4月22日位于安徽境内的干冷锋，当冷锋移至合肥附近时，当地具有不稳定和水汽的暖湿团中产生了强雷暴，导致局地冰雹和雷暴大风</p>
+<div class="figure align-center" id="id21">
+<img alt="干冷锋辐合线触发雷暴" src="_images/干冷锋辐合线触发.png" />
+<p class="caption"><span class="caption-text">图：干冷锋辐合线触发雷暴</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>非气象回波<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
 <p>非气象回波是由于一些非气象类的目标体对电磁波的散射所产生的回波和由于雷达性能而引起的虚假回波。
 这类回波往往根据其所产生的目标体的类型，将回波分为：
 地物回波、海浪回波、晴空回波、同波长干扰回波、超折射回波和旁瓣假回波等。</p>
 <p>可通过连续跟踪、动态显示或抬高仰角等手段，将其与降水回波区分。</p>
-<div class="section" id="id6">
-<h3>地物回波<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id13">
+<h3>旁瓣回波<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<p>雷达发射能量主要集中在波束宽度接近1°的主瓣上，但是也有一部分能量沿着主瓣中心几度方向的旁瓣发射，
+通常情况下，旁瓣回波的能力很弱，但是在旁瓣碰到强反射率目标物，如强降水柱或冰雹时能返回足够被识别
+的能量，从而产生旁瓣回波。</p>
+<p>下图给出的是雷达在旋转扫描过程中，主瓣还没扫到强回波核时，旁瓣已经碰到强回波核并散射回雷达，
+雷达将其定位到主瓣所在的径向上，从而出现在同距离圈上强回波核的一侧出现虚假的回波。</p>
+<div class="figure align-center" id="id22">
+<img alt="强回波核旁的旁瓣回波" src="_images/sidelobe.png" />
+<p class="caption"><span class="caption-text">图：强回波核旁的旁瓣回波（来源:NOAA PPT）</span></p>
+</div>
+<p>下图给出的是雷达旁瓣回波接触到雷达附近的地面而产生的地物杂波，可以发现这些回波的径向速度都为0。</p>
+<div class="figure align-center" id="id23">
+<img alt="旁瓣地物回波" src="_images/side_lobe_echoes.jpg" />
+<p class="caption"><span class="caption-text">图：旁瓣地物回波</span></p>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>地物回波<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
 <p>地物回波是指由山地及其上的各种建筑物等对电磁波的散射所产生的回波。</p>
 <p>产生地物回波的目标体有三类：
 - 一是地表，包括山脉、丘陵、岛屿、海岸线等;
 - 二是地表上的人工建筑物；
 - 三是超折射回波（虚假回波）。</p>
 <p>地物回波特点：边缘清晰，位置固定，强度少变。呈小柱状，高度低。</p>
-<div class="figure align-center" id="id12">
+<p>下图给出了一个地物回波的例子，在白色圆圈圈出的雷达西侧看起来有许多的回波，但是在径向速度图上可以发现它们是静止的，
+这些回波是在特定大气条件下，超折射使得波束碰到地面产生的地物杂波，半小时后，由于大气环境的变化，这些地物回波大幅减少。</p>
+<div class="figure align-center" id="id24">
 <img alt="特定大气条件下，波束折射到地面产生强的地物回波" src="_images/groundclutter.png" />
-<p class="caption"><span class="caption-text">图：特定大气条件下，波束超折射碰到地面产生强的地物回波（左右分别为0.5°仰角的反射率和速度图，上下图时间间隔约半小时，来源: <a class="reference external" href="http://lukemweather.blogspot.com/2011/05/seeing-ground-clutter-on-radar.html">Luke Madaus</a> ）</span></p>
+<p class="caption"><span class="caption-text">图：特定大气条件下，波束超折射碰到地面产生强的地物回波（左右分别为0.5°仰角的反射率和径向速度，上下图时间间隔约半小时，来源: <a class="reference external" href="http://lukemweather.blogspot.com/2011/05/seeing-ground-clutter-on-radar.html">Luke Madaus</a> ）</span></p>
 </div>
 </div>
-<div class="section" id="id7">
-<h3>晴空回波<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id15">
+<h3>晴空回波<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
 <p>回波强度位于0－10dBz,高度2KM以下，卫星云图上为晴空区。晴空回波主要出现在雷达周围较近的距离，并且在暖季出现的更加频繁。</p>
 <dl class="docutils">
 <dt>晴空回波有两种可能的原因：</dt>
@@ -222,13 +326,13 @@
 </ul>
 </dd>
 </dl>
-<div class="figure align-center" id="id13">
+<div class="figure align-center" id="id25">
 <a class="reference internal image-reference" href="_images/晴空回波.png"><img alt="晴空回波" src="_images/晴空回波.png" style="width: 558.0px; height: 418.2px;" /></a>
 <p class="caption"><span class="caption-text">图：晴空回波（来源:汤兴芝PPT）</span></p>
 </div>
 </div>
-<div class="section" id="id8">
-<h3>生物回波<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id16">
+<h3>生物回波<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
 </div>
 </div>
 </div>
